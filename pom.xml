@@ -24,6 +24,9 @@
         <javaVersion>1.7</javaVersion>
         <vaadinVersion>7.2-SNAPSHOT</vaadinVersion>
         <runTarget></runTarget>
+        <license.inceptionYear>2014</license.inceptionYear>
+        <license.organizationName>KangWoo, Lee</license.organizationName>
+        <license.licenseName>apache_v2</license.licenseName>
     </properties>
 
     <dependencies>
@@ -67,6 +70,27 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <id>license</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>update-file-header</goal>
+                            <goal>update-project-license</goal>
+                        </goals>
+                        <configuration>
+                            <licenseName>apache_v2</licenseName>
+                            <roots>
+                                <root>src/main</root>
+                            </roots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
